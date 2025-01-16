@@ -1,0 +1,75 @@
+{
+  "name": "eduai",
+  "displayName": "EduAi",
+  "description": "breaking down problems with ai",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "eduai-sidebar",
+          "title": "EduAI",
+          "icon": "media/robot.svg"
+        }
+      ]
+    },
+    "views": {
+      "eduai-sidebar": [
+        {
+          "type": "webview",
+          "id": "eduai.ollamaView",
+          "name": "Ollama Chat"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "eduai.askOllama",
+        "title": "Ask Ollama"
+      },
+      {
+        "command": "eduai.setOllamaModel",
+        "title": "Set Ollama Model"
+      }
+    ],
+    "configuration": {
+      "title": "EduAI",
+      "properties": {
+        "eduai.ollamaHost": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Ollama API host URL"
+        },
+        "eduai.ollamaModel": {
+          "type": "string",
+          "default": "llama2",
+          "description": "Ollama model to use"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.96.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "eslint": "^9.16.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  },
+  "dependencies": {
+    "axios": "^1.6.2"
+  }
+}
